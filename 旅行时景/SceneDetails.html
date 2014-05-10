@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>时景详情</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="HandheldFriendly" content="True" />
+		<meta name="MobileOptimized" content="320" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta http-equiv="cleartype" content="on">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta content="telephone=no" name="format-detection" />  
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.imagesloaded.js"></script>
+		<script type="text/javascript" src="js/jquery.wookmark.min.js"></script>
+		<script type="text/javascript" src="js/move.js"></script>
+		<script type="text/javascript" src="js/demo.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/travel.css">		
+		<link rel="stylesheet" type="text/css" href="css/details.css">		
+	</head>
+	<body>
+		<header id='header-menu'>
+			<input type="button" id="back_in" name="back_in" value="" />
+			<p>时景详情</p>
+			<input type="button" id="transmission" name="transmission" value=""  />
+		</header>
+		<section id="flow-wrapper">
+			<div class="big_pic">
+				<div class="prev"></div>
+				<div class="next"></div>
+				<img src="images/sunrise.png" alt="" />
+				<a class="mark_left" href=""></a>
+				<a class="mark_right" href=""></a>
+				<p class="English">Today ,the GreatWall to play one day,soon exhuasted me!</p>
+				<p class="Chinese">今天到长城玩了一天，快累死我了！</p>
+				<div class="remark">
+					<img src="images/boy.png" alt=""/>
+					<div class="detail">
+						<div class="username">土豪朋友 </div>
+						<div class="remark_time">2013-11-05 18:59</div>	
+					</div>
+					<span class="praise_remark"><a href="">98</a></span>
+					<span class="praise_heart good"><a href="">18</a></span>
+				</div>
+				<div class="map">
+					<img src="images/map.png" alt="" />
+					<div class="address">北京苏州街善缘街1号立...</div>
+				</div>
+				<span class="source"><a href="">采集自</a></span>
+				<span class="inform"><a href="">举报该内容</a></span>
+			</div>		
+		</section>
+		<script type="text/javascript">
+			$(function(){
+				$('#content-wrapper').imagesLoaded(function() {
+				        var $window = $(window);
+						var windowWidth= $window.width();
+				        // Prepare layout options.
+				        var options = {
+				          itemWidth: windowWidth > 640 ? 200 : 130, // Optional min width of a grid item
+				          autoResize: true, // This will auto-update the layout when the browser window is resized.
+				          container: $('#content-wrapper'), // Optional, used for some extra CSS styling
+				          offset: 10, // Optional, the distance between grid items
+				          outerOffset: 10, // Optional the distance from grid to parent
+				          flexibleWidth: '320' // Optional, the maximum width of a grid item
+				        };
+
+				        // Get a reference to your grid items.
+				        var handler = $('#spring-flow li');
+
+				        $window.resize(function() {
+				         	windowWidth = $window.width(),
+				            newOptions = { flexibleWidth: '50%' };
+
+				          // Breakpoint
+				          if (windowWidth < 1024) {
+				            newOptions.flexibleWidth = '50%';
+				          }
+
+				          if(windowWidth > 640){
+				          	newOptions.itemWidth = 200;
+				          }else{
+				          	newOptions.itemWidth = 130;
+				          }
+
+				          handler.wookmark(newOptions);
+				        });
+
+				        // Call the layout function.
+				        handler.wookmark(options);
+				});
+			});
+		</script>
+	
+</body>
+</html>

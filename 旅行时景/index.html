@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>旅行时景</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="HandheldFriendly" content="True" />
+		<meta name="MobileOptimized" content="320" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta http-equiv="cleartype" content="on">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta content="telephone=no" name="format-detection" />  
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.imagesloaded.js"></script>
+		<script type="text/javascript" src="js/jquery.wookmark.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/travel.css">		
+	</head>
+	<body>
+		<header id='header-menu'>
+			<input type="button" id="back_in" name="back_in" value="" />
+			<p>旅行时景</p>
+			<input type="button" id="hunt_for" name="hunt_for" value=""  />
+		</header>
+		<section id="content-wrapper">
+			<ul id="spring-flow">
+				<li class="special_li"><a href="SceneDetails.html"><img src="images/weather.png" alt="" /></a></li>
+		        <li class="special_li"><a href="SceneDetails.html"><img src="images/daily_pic.png" alt="" /></a></li>
+		        <li><a href="SceneDetails.html"><img src="images/destination.png" alt="" /></a></li>
+		        <li><a href="SceneDetails.html"><img src="images/food.png" alt="" /></a>
+					<div class="remark">
+						<img src="images/small_pic.png" alt="" />
+						<div class="detail">
+							<div class="username">David</div>
+							<div class="remark_time">15分钟以前</div>
+						</div>
+					</div>
+				</li>
+		        <li class="rural_autumn"><a href="SceneDetails.html"><img src="images/autumn_beauty.png" alt=""/></a>
+					<p class="autumn_beauty">
+						乡间秋色~香气弥漫
+					</p>
+					<input type="button" id="beijing_city" name="beijing_city"  />
+					<input type="button" id="heart_pic" name="heart_pic" />
+					<div class="remark">
+						<img src="images/panada.png" alt=""/>
+						<div class="detail">
+							<div class="username">小懒虫</div>
+							<div class="remark_time">刚刚</div>
+						</div>
+					</div>
+				</li>
+		        <li><a href="SceneDetails.html"><img src="images/sea.png" alt="" /></a>
+					<p class="autumn_beauty">
+						When the first time I got there, I almost shocked...it was so beautifil in ev...
+					</p>
+					<div class="remark">
+						<img src="images/girl.png" alt=""/>
+						<div class="detail">
+							<div class="username">Samantha</div>
+							<div class="remark_time">2013-11-29 13:49</div>
+						</div>
+					</div>
+				</li>
+		        <li><a href="SceneDetails.html"><img src="images/animal.png" alt="" /></a></li>		        
+			</ul>
+		</section>
+		<footer id='footer-menu'>
+			<div class="footer_nav">
+				<input type="button" id="go_back" name="go_back" />
+				<div class="bottom_menu">
+					<a class="destination" href="">选目的地</a>
+					<a class="message" href="">消息
+						<span class="hot_dot"></span>
+					</a>
+					<a class="owner_view" href="">我的时景</a>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript">
+			$(function(){
+				$('#content-wrapper').imagesLoaded(function() {
+				        var $window = $(window);
+						var windowWidth= $window.width();
+				        // Prepare layout options.
+				        var options = {
+				          itemWidth: windowWidth > 640 ? 200 : 130, // Optional min width of a grid item
+				          autoResize: true, // This will auto-update the layout when the browser window is resized.
+				          container: $('#content-wrapper'), // Optional, used for some extra CSS styling
+				          offset: 10, // Optional, the distance between grid items
+				          outerOffset: 10, // Optional the distance from grid to parent
+				          flexibleWidth: '320' // Optional, the maximum width of a grid item
+				        };
+
+				        // Get a reference to your grid items.
+				        var handler = $('#spring-flow li');
+
+				        $window.resize(function() {
+				         	windowWidth = $window.width(),
+				            newOptions = { flexibleWidth: '50%' };
+
+				          // Breakpoint
+				          if (windowWidth < 1024) {
+				            newOptions.flexibleWidth = '50%';
+				          }
+
+				          if(windowWidth > 640){
+				          	newOptions.itemWidth = 200;
+				          }else{
+				          	newOptions.itemWidth = 130;
+				          }
+
+				          handler.wookmark(newOptions);
+				        });
+
+				        // Call the layout function.
+				        handler.wookmark(options);
+				});
+			});
+		</script>
+	</body>
+</html>
