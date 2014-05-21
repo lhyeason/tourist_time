@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>时景详情</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="HandheldFriendly" content="True" />
+		<meta name="MobileOptimized" content="320" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta http-equiv="cleartype" content="on">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta content="telephone=no" name="format-detection" />  
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.imagesloaded.js"></script>
+		<script type="text/javascript" src="js/jquery.wookmark.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/move.js"></script>
+		<script type="text/javascript" src="js/demo.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/travel.css">		
+		<link rel="stylesheet" type="text/css" href="css/details.css">		
+	</head>
+	<body>
+		<header id='header-menu'>
+			<input type="button" id="back_in" name="back_in" value="" />
+			<p>时景详情</p>
+			<input type="button" id="transmission" name="transmission" value=""  />
+		</header>
+		<section id="flow-wrapper">
+			<div class="big_pic">
+				<div class="prev"></div>
+				<div class="next"></div><!--在大图上加的左右按钮-->
+				<img src="images/sunrise.png" alt="" />
+				<a class="mark_left" href=""></a>
+				<a class="mark_right" href=""></a><!--鼠标放到左右两半部分时显示按钮-->
+				<p class="English">Today ,the GreatWall to play one day,soon exhuasted me!</p>
+				<p class="Chinese">今天到长城玩了一天，快累死我了！</p>
+				<div class="remark">
+					<img src="images/boy.png" alt=""/>
+					<div class="detail">
+						<div class="username">土豪朋友 </div>
+						<div class="remark_time">2013-11-05 18:59</div>	
+					</div>
+					<span class="praise_remark"><a href="">98</a></span>
+					<span class="praise_heart good"><a href="">18</a></span><!--评论，赞-->
+				</div>
+				<div class="map_pic">
+					<div id="map_container" class="map">
+						<img src="images/map.png" alt="" />
+					</div>
+					<div class="address">北京苏州街善缘街1号立...</div>
+				</div>		<!--地图-->		
+				<span class="source"><a href="">采集自</a></span>
+				<span class="inform"><a href="">举报该内容</a></span>
+			</div>		
+		</section>
+		<script type="text/javascript">
+			$(function(){
+				$('#content-wrapper').imagesLoaded(function() {
+				        var $window = $(window);
+						var windowWidth= $window.width();
+				        // Prepare layout options.
+				        var options = {
+				          itemWidth: windowWidth > 640 ? 200 : 130, // Optional min width of a grid item
+				          autoResize: true, // This will auto-update the layout when the browser window is resized.
+				          container: $('#content-wrapper'), // Optional, used for some extra CSS styling
+				          offset: 10, // Optional, the distance between grid items
+				          outerOffset: 10, // Optional the distance from grid to parent
+				          flexibleWidth: '320' // Optional, the maximum width of a grid item
+				        };
+
+				        // Get a reference to your grid items.
+				        var handler = $('#spring-flow li');
+
+				        $window.resize(function() {
+				         	windowWidth = $window.width(),
+				            newOptions = { flexibleWidth: '50%' };
+
+				          // Breakpoint
+				          if (windowWidth < 1024) {
+				            newOptions.flexibleWidth = '50%';
+				          }
+
+				          if(windowWidth > 640){
+				          	newOptions.itemWidth = 200;
+				          }else{
+				          	newOptions.itemWidth = 130;
+				          }
+
+				          handler.wookmark(newOptions);
+				        });
+
+				        // Call the layout function.
+				        handler.wookmark(options);
+				});
+			});
+	</script>
+	
+</body>
+</html>
+<script type="text/javascript">
+	/*<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"> 百度地图接口  V= 2.0需要密钥
+city.js  调取城市的JS方法   
+*/
+// 新创建地图
+var map = new BMap.Map("map_container");
+var point = new BMap.Point(116.331398,39.897445);
+map.centerAndZoom(point, 12);   //创建第一次显示的地图  POINT ：  坐标      12： 地图的显示级别 
+    map.addControl(new BMap.NavigationControl()); //开启伸缩控制  http://developer.baidu.com/map/jsdevelop-3.htm 
+    map.enableScrollWheelZoom();
+    //启动鼠标滚轮操作
+    map.enableKeyboard();
+    //键盘控制开启.默认都是不开启的
+    map.enableContinuousZoom();    // 开启连续缩放效果
+    map.enableInertialDragging();　// 开启惯性拖拽效果
+var cityList = new BMapLib.CityList({   //初始化类 BMapLib 是在MAP下的Lib类
+    container: 'container',
+    map: map
+}); 
+cityList.addEventListener('cityclick', function(b){
+    //console.log(b);
+    var marker = new BMap.Marker(b.geo);  // 创建标注
+    map.clearOverlays();                  //清除已有的标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    var label = new BMap.Label("请拖动红色箭头到您公司所在位置",{offset:new BMap.Size(20,-10)});
+    marker.setLabel(label);
+    marker.enableDragging();    //标注可拖拽
+    marker.addEventListener("dragend", function showInfo(){//移动标注获取当前经纬度的数值
+    var p = marker.getPosition();                       //获取当前的标注信息
+    	//alert("marker的位置是" + p.lng + "," + p.lat); 
+    	
+    	//把  P  保存到数据库       
+    });
+ });
+</script>

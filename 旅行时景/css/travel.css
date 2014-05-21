@@ -1,0 +1,229 @@
+html
+{ 
+	font-size:62.5%; 
+} /*1rem=10px; rem相对于root而言*/
+body
+{
+	font-family: '微软雅黑','Helvetica Neue',sans-serif,SimHei;
+	-webkit-font-smoothing: antialiased;
+	background:#f2f8fb;
+	/* overflow-x:hidden; */
+}
+#header-menu,#footer-menu
+{
+	width:100%;
+	position: fixed;
+	left:0;
+	height:5rem;
+	line-height: 5rem;		
+	font-size:2.5rem;
+	text-align: center;
+	z-index:9999;
+	color:#FFF;
+}
+#header-menu
+{
+	top:0;
+	background:#1ba9ba; 
+}
+#back_in,
+#hunt_for
+{ 
+	cursor:pointer;
+	border:none;
+	position:absolute;
+	top:20%;
+}
+#back_in
+{ 
+	background:url(../images/back_in.png) no-repeat;
+	background-size:1.8rem;
+	width:2.5rem; 
+	height:4.1rem;
+	left:3%;
+ }
+#hunt_for
+{ 	
+	width:3.8rem;
+	height:3.8rem; 
+	background:url(../images/hunt_for.png) no-repeat;
+	background-size:2.8rem;
+	right:2%;
+}
+/*以上是头部*/
+
+#content-wrapper,#flow-wrapper
+{
+	padding:5rem 0;
+	font-size:1.6rem;
+	width:100%;
+	position: relative;
+	z-index: 1;
+}
+
+
+#spring-flow {
+  list-style-type: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+}
+#spring-flow li {
+  height:auto;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 1px #dedede;
+  display: none; 
+  cursor: pointer;
+  border: 1px solid #dedede;
+}
+#spring-flow li.special_li
+{
+	border:none;
+}
+#spring-flow li.rural_autumn{
+	position:relative;
+}
+#beijing_city,#heart_pic{
+	border:none;
+	cursor:pointer;
+	width:67px;
+	height:36px;
+	position:absolute;
+	top:5px;	
+}
+#beijing_city{
+	left:0;
+	background:url(../images/beijing.png) no-repeat;
+	background-size:40px;
+}
+#heart_pic{	
+	right:-27px;
+	background:url(../images/heart.png) no-repeat;
+	background-size:40px;
+}/*第五张图片上点赞按钮*/
+#spring-flow li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+#spring-flow li img {
+  display: block;
+  width: 100%;
+}
+#spring-flow li .remark{
+	width:100%;
+	height:auto;
+	font-size:1.2rem;
+	display:block;
+}
+#spring-flow li .remark img{
+	width:50px;
+	height:50px;
+	margin:10px;
+	float:left;
+}
+#spring-flow li .remark .detail {
+	margin-left:70px;	
+}
+#spring-flow li .remark .username{
+	padding-top:10px;
+	color:#3b3b3b;
+}
+#spring-flow li .remark .remark_time{
+	padding-top:5px;
+	color:#818181;
+}
+#spring-flow li p.autumn_beauty{
+	padding-left:5px;
+	font-size:1.4rem;	
+	color:#505050;
+	margin-top:5px;
+	padding-bottom:5px;
+	border-bottom:1px solid #dcdcdc;	
+}
+#footer-menu
+{
+	bottom:0;
+	background: #37393a;
+}
+.footer_nav{
+	width:95%;
+	height:80%;	
+	margin:7px auto;
+	background:#262626;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+}/*圆形导航条*/
+#go_back{ 
+	float: left;
+	width: 3.9rem;
+	height: 100%;
+	border:none;
+	background: url(../images/circle_button.png) no-repeat;
+	background-size: 3.7rem;
+	margin: 0.2rem 0 0 0.2rem;
+}
+
+.bottom_menu{
+	width:70%;
+	height:100%;	
+	margin-left:20%;
+	margin-right:10%;
+
+}
+.bottom_menu a{
+	text-decoration:none;
+	height:100%;
+	line-height:260%;
+	float:left;	
+	color:#fff;
+	font-size:1.6rem;
+	background:url(../images/line.png) no-repeat right center;	
+}
+.destination{ 
+	width:35%;
+}
+.message{
+	width:30%;
+	position:relative;
+}
+.bottom_menu .owner_view{
+	background:none;
+	width:35%;
+}
+.hot_dot{ 
+	position:absolute;
+	z-index:100;
+	width:18px;
+	height:18px;
+	top:2px;
+	right:-3px;
+	background:url(../images/hot_dot.png) no-repeat;
+	background-size:12px;
+}
+/*消息上的小圆点*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
